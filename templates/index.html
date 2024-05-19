@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BankAccount In QR</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script>
         function showAlert(message) {
             alert(message);
         }
     </script>
 </head>
-<body class="bg-white text-gray-800">
-    <div class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold text-center mb-4">계좌번호 in QR</h1>
+<body>
+    <div class="form-container">
+        <h1>계좌번호 in QR</h1>
         {% if error %}
             <script>
                 showAlert("{{ error }}");
             </script>
         {% endif %}
-        <form action="/generate_qr" method="post" class="max-w-md mx-auto p-6 rounded-lg shadow-lg" style="background: linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4);">
-            <label for="bank_name" class="block text-sm font-medium text-white">Bank Name:</label>
-            <select id="bank_name" name="bank_name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option value="">Select a bank</option>
+        <form action="/generate_qr" method="post">
+            <label for="bank_name">은행명</label>
+            <select id="bank_name" name="bank_name" required>
+                <option value="">은행 선택하기</option>
                 <option value="카카오뱅크">카카오뱅크</option>
                 <option value="국민">국민</option>
                 <option value="신한">신한</option>
@@ -48,11 +48,9 @@
                 <option value="제주">제주</option>
                 <option value="산림조합">산림조합</option>
             </select>
-            <br>
-            <label for="account_number" class="block text-sm font-medium text-white">Account Number:</label>
-            <input type="text" id="account_number" name="account_number" pattern="\d*" title="Please enter numbers only" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-            <br>
-            <button type="submit" class="w-full py-2 px-4 bg-white text-indigo-700 font-semibold rounded-lg shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-75">Generate QR Code</button>
+            <label for="account_number">계좌번호 (숫자만 입력)</label>
+            <input type="text" id="account_number" name="account_number" pattern="\d*" title="Please enter numbers only" required>
+            <button type="submit">QR Code 생성하기</button>
         </form>
 
         {% if qr_code %}

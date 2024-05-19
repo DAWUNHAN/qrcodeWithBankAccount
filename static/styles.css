@@ -1,0 +1,61 @@
+body {
+    background: linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.form-container {
+    background-color: white;
+    width: 90%;
+    max-width: 400px;
+    padding: 1.8rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: left;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    box-sizing: border-box; /* Add this line to ensure width includes padding and border */
+}
+
+button {
+    background: linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(to right, #6e76c9, #7fa4d7, #8ad1dc);
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+#qrCodeImage {
+    max-width: 100%; /* Ensure QR code fits within the container */
+    height: auto;
+    max-height: 200px; /* Limit the height of the QR code */
+}
