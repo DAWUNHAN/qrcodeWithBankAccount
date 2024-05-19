@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy to Clipboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function copyToClipboard(text) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(function() {
+                    alert('계좌번호 복사 완료! ' + text);
+                }).catch(function(error) {
+                    alert('계좌번호 복사 실패.. ' + error);
+                });
+            } else {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('계좌번호 복사 완료! ' + text);
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-800">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold text-center mb-4">QR Code Data</h1>
+        <div class="p-6 rounded-lg shadow-lg" style="background: linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4);">
+            <p class="text-white">{{ data }}</p>
+            <button onclick="copyToClipboard('{{ data }}')" class="mt-4 w-full py-2 px-4 bg-white text-indigo-700 font-semibold rounded-lg shadow-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-75">계좌번호 복사하기</button>
+        </div>
+    </div>
+</body>
+</html>
