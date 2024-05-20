@@ -19,48 +19,50 @@
                 showAlert("{{ error }}");
             </script>
         {% endif %}
-        <form action="/generate_qr" method="post">
-            <label for="bank_name">은행명</label>
-            <select id="bank_name" name="bank_name" required>
-                <option value="">은행 선택하기</option>
-                <option value="카카오뱅크">카카오뱅크</option>
-                <option value="국민">국민</option>
-                <option value="신한">신한</option>
-                <option value="우리">우리</option>
-                <option value="하나">하나</option>
-                <option value="토스뱅크">토스뱅크</option>
-                <option value="농협">농협</option>
-                <option value="케이뱅크">케이뱅크</option>
-                <option value="기업">기업</option>
-                <option value="SC제일">SC제일</option>
-                <option value="대구">대구</option>
-                <option value="새마을">새마을</option>
-                <option value="산업">산업</option>
-                <option value="부산">부산</option>
-                <option value="수협">수협</option>
-                <option value="씨티">씨티</option>
-                <option value="신협">신협</option>
-                <option value="경남">경남</option>
-                <option value="저축은행">저축은행</option>
-                <option value="우체국">우체국</option>
-                <option value="전북">전북</option>
-                <option value="광주">광주</option>
-                <option value="제주">제주</option>
-                <option value="산림조합">산림조합</option>
-            </select>
-            <label for="account_number">계좌번호 (숫자만 입력)</label>
-            <input type="text" id="account_number" name="account_number" pattern="\d*" title="Please enter numbers only" required>
-            <label for="account_holder">예금주</label>
-            <input type="text" id="account_holder" name="account_holder" required>
-            <button type="submit">QR Code 생성하기</button>
-        </form>
-
+        {% if not qr_code %}
+            <form action="/generate_qr" method="post">
+                <label for="bank_name">은행명</label>
+                <select id="bank_name" name="bank_name" required>
+                    <option value="">은행 선택하기</option>
+                    <option value="카카오뱅크">카카오뱅크</option>
+                    <option value="국민">국민</option>
+                    <option value="신한">신한</option>
+                    <option value="우리">우리</option>
+                    <option value="하나">하나</option>
+                    <option value="토스뱅크">토스뱅크</option>
+                    <option value="농협">농협</option>
+                    <option value="케이뱅크">케이뱅크</option>
+                    <option value="기업">기업</option>
+                    <option value="SC제일">SC제일</option>
+                    <option value="대구">대구</option>
+                    <option value="새마을">새마을</option>
+                    <option value="산업">산업</option>
+                    <option value="부산">부산</option>
+                    <option value="수협">수협</option>
+                    <option value="씨티">씨티</option>
+                    <option value="신협">신협</option>
+                    <option value="경남">경남</option>
+                    <option value="저축은행">저축은행</option>
+                    <option value="우체국">우체국</option>
+                    <option value="전북">전북</option>
+                    <option value="광주">광주</option>
+                    <option value="제주">제주</option>
+                    <option value="산림조합">산림조합</option>
+                </select>
+                <label for="account_number">계좌번호 (숫자만 입력)</label>
+                <input type="text" id="account_number" name="account_number" pattern="\d*" title="Please enter numbers only" required>
+                <label for="account_holder">예금주</label>
+                <input type="text" id="account_holder" name="account_holder" required>
+                <button type="submit">QR Code 생성하기</button>
+            </form>
+        {% endif %}
         {% if qr_code %}
             <div class="flex justify-center mt-4">
                 <img src="{{ qr_code }}" alt="QR Code" id="qrCodeImage" class="rounded-lg shadow-lg">
             </div>
             <div class="flex justify-center mt-4">
-                <a href="{{ url_for('download_qr') }}" class="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 text-center">QR 코드 다운로드</a>
+                <button type="submit"><a href="{{ url_for('download_qr_pdf') }}" class="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 text-center">QR 코드 PDF 다운로드</a></button>
+                <button type="submit"><a href="{{ url_for('download_qr_png') }}" class="w-full py-2 px-4 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 text-center mt-2">QR 코드 PNG 다운로드</a></button>
             </div>
         {% endif %}
     </div>

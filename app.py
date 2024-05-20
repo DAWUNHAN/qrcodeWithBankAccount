@@ -80,8 +80,8 @@ def generate_qr():
 
     return render_template('index.html', qr_code=img_data)
 
-@app.route('/download_qr')
-def download_qr():
+@app.route('/download_qr_pdf')
+def download_qr_pdf():
     global qr_image_buffer, bank_name, account_number, account_holder, masked_account_holder  # Declare these as global variables
     qr_image_buffer.seek(0)  # Reset buffer position to the beginning
 
@@ -123,6 +123,13 @@ def download_qr():
     pdf_buffer.seek(0)
 
     return send_file(pdf_buffer, mimetype='application/pdf', as_attachment=True, download_name='qr_code.pdf')
+
+@app.route('/download_qr_png')
+def download_qr_png():
+    global qr_image_buffer  # Use the global qr_image_buffer variable
+    qr_image_buffer.seek(0)  # Reset buffer position to the beginning
+
+    return send_file(qr_image_buffer, mimetype='image/png', as_attachment=True, download_name='qr_code.png')
 
 @app.route('/copy_to_clipboard')
 def copy_to_clipboard():
