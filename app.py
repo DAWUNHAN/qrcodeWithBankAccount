@@ -57,8 +57,10 @@ def generate_qr():
     local_ip = os.getenv('LOCAL_IP')
     port = os.getenv('FLASK_APP_PORT')
 
-    # IP 주소와 포트를 직접 지정하여 URL 생성
-    url = f"http://{local_ip}:{port}/copy_to_clipboard?data={encoded_data}"
+    # # IP 주소와 포트를 직접 지정하여 URL 생성
+    # url = f"http://{local_ip}:{port}/copy_to_clipboard?data={encoded_data}"
+    host_url = request.host_url
+    url = f"{host_url}copy_to_clipboard?data={encoded_data}"
     print(f"URL for QR: {url}")
 
     qr = qrcode.QRCode(
