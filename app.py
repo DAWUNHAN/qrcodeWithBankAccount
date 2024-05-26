@@ -139,6 +139,6 @@ def copy_to_clipboard():
     return render_template('copy.html', data=data)
 
 if __name__ == '__main__':
-    host = os.getenv('FLASK_APP_HOST')
-    port = int(os.getenv('FLASK_APP_PORT'))
+    host = '0.0.0.0'
+    port = int(os.environ.get('PORT', 5000))
     app.run(debug=True, host=host, port=port)
