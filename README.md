@@ -5,16 +5,18 @@
 구매자는 QR코드를 스캔하여 계좌번호 복사 완료!
 
 ### QR코드 생성하기
-[![QR코드 생성하기](https://img.shields.io/badge/QR코드-생성하기-blue)](https://qrcodewithbankaccount-8261b483b14d.herokuapp.com/)
+[![웹사이트](https://img.shields.io/badge/QR코드-웹사이트-blue)](https://qrcodewithbankaccount-8261b483b14d.herokuapp.com/)
+
+### 화면
+- 계좌번호를 입력한 뒤 QR코드 생성하기
+![생성](https://github.com/DAWUNHAN/qrcodeWithBankAccount/blob/0507fb173d991c2de72fd6724f1bda5b2a344c4d/img/generate.png?raw=true)
+
+- 생성된 QR코드 다운받기
+![다운](https://github.com/DAWUNHAN/qrcodeWithBankAccount/blob/master/img/qrcode.png?raw=true)
 
 
-### Todo
-- [x] 계좌번호/은행명 입력 받기
-- [x] QR코드 생성
-- [x] 계좌번호 복사 페이지 구현
-- [x] responsive 페이지 구현
-- [x] CSS 수정
-- [x] QR코드+계좌정보 프린트 형식 생성
-- [x] QR코드+계좌정보 PDF로 다운받기
-- [x] QR코드 이미지 다운받기
-- [x] QR코드 생성 뒤, 입력칸 삭제
+### 기능
+- 은행 이름과 계좌번호를 입력하여 QR 코드 생성
+- 생성된 QR 코드를 PDF 또는 PNG 파일로 다운로드
+- 생성된 QR 코드를 스캔하여 계좌 정보를 클립보드에 복사
+- 사용자가 사용할 은행 앱을 열 수 있는 버튼 제공
